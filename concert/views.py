@@ -36,7 +36,7 @@ def index(request):
 
 
 def songs(request):
-    songs = req.get("https://SONGS_URL/song").json()
+    songs = req.get("SONGS_URL/song").json()
     return render(request, "songs.html", {"songs": songs["songs"]})
 
 
