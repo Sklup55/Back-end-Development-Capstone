@@ -36,13 +36,20 @@ def index(request):
 
 
 def songs(request):
-    songs = req.get("https://SONGS_URL/song").json()
-    return render(request, "songs.html", {"songs": songs["songs"]})
+    songs = {"songs":[{"id":1,"title":"duis faucibus accumsan odio curabitur convallis","lyrics":"Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."}]}
+    return render(request, "songs.html", {"songs":songs["songs"]})
 
 
 
 def photos(request):
-    photos = req.get("PHOTO_URL/picture").json()
+    photos = [{
+    "id": 1,
+    "pic_url": "http://dummyimage.com/136x100.png/5fa2dd/ffffff",
+    "event_country": "United States",
+    "event_state": "District of Columbia",
+    "event_city": "Washington",
+    "event_date": "11/16/2022"
+    }]
     return render(request, "photos.html", {"photos": photos})
 
 
@@ -61,10 +68,10 @@ def login_view(request):
             return render(request, "login.html", {"form": LoginForm})
     return render(request, "login.html", {"form": LoginForm})
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
+
 
 
 def concerts(request):
